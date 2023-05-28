@@ -56,15 +56,27 @@
         }
     },
     "cds": {
+        "i18n": {
+            "folders": [
+                "_i18n",
+                "i18n"
+            ]
+        },
         "requires": {
             "uaa": {
                 "kind": "xsuaa"
             },
             "db": {
                 "model": [
-                  "srv"
+                    "db",
+                    "srv"
                 ],
-                "kind": "sqlite"
+                "kind": "hana",
+                "pool": {
+                    "acquireTimeoutMillis": 600000,
+                    "min": 0,
+                    "max": 600000
+                }
             },
             "AICoreAzureOpenAIDestination": {
                 "kind": "rest",
@@ -73,6 +85,9 @@
                     "path": "/v2/inference/deployments/d5661384a0a8ae13"
                 }
             }
-        }
+        },
+        "hana": {
+            "deploy-format": "hdbtable"
+        }    
     }
 }

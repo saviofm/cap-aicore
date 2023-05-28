@@ -10,12 +10,91 @@ build-parameters:
     - builder: custom
       commands:
         - npx -p @sap/cds-dk cds build --production
+
+
+
+# ----------------------------------------------------------------
+# ----------------------------------------------------------------
+# ----------------------------MODULES-----------------------------
+# ----------------------------------------------------------------
+# ----------------------------------------------------------------        
 modules:
+
+  # ------------------------ HTML5 Content -------------------------
+  - name: cap-aicore-destination-content
+  # ----------------------------------------------------------------
+    type: com.sap.application.content
+    path: .
+    requires:
+    - name: cap-aicore-xsuaa-service
+      parameters:
+        service-key:
+          name: cap-aicore_xsuaa-key
+    - name: cap-aicore-html5-host
+      parameters:
+        service-key:
+          name: cap-aicore_html5_host-key
+    - name: cap-aicore-destination-service
+      parameters:
+        content-target: true      
+    parameters:
+      content:
+        subaccount:
+          destinations:
+          - Name: cap-aicore_html5_host
+            ServiceInstanceName: cap-aicore-html5-host-service
+            ServiceKeyName: cap-aicore_html5_host-key
+            sap.cloud.service: cap-aicore
+          - Authentication: OAuth2UserTokenExchange
+            Name: cap-aicore_xsuaa
+            ServiceInstanceName: cap-aicore-xsuaa-service
+            ServiceKeyName: cap-aicore_xsuaa-key
+            sap.cloud.service: cap-aicore
+          existing_destinations_policy: update    
+    build-parameters:
+      no-source: true
+
+
+  # -------------------- UI DEPLOYER MODULE -------------------- 
+  - name: cap-aicore-ui-deployer 
+  # ------------------------------------------------------------
+    type: com.sap.application.content
+    path: .
+    requires:
+    - name: cap-aicore-html5-host
+      parameters:
+        content-target: true
+    build-parameters:
+      build-result: resources
+      requires:
+      - artifacts:
+        - capaicoreappproducts.zip
+        name: capaicoreappproducts
+        target-path: resources/
+
+  # --------------------- HTML5 MODULE -------------------------
+  - name: capaicoreappproducts
+  # ------------------------------------------------------------
+    type: html5
+    path: app/products
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+      - npm run build:cf
+      supported-platforms: []
+
+# --------------------- CAP SERVER MODULE ------------------------
   - name: cap-aicore-srv
+# ----------------------------------------------------------------  
     type: nodejs
     path: gen/srv
+    properties:
+      SAP_JWT_TRUST_ACL: '[{"clientid":"*","identityzone":"*"}]'    
     parameters:
       buildpack: nodejs_buildpack
+      disk-quota: 1024M
+      memory: 512M
     build-parameters:
       builder: npm-ci
     provides:
@@ -23,24 +102,49 @@ modules:
         properties:
           srv-url: ${default-url}
     requires:
-      - name: cap-aicore-uaa
-      - name: cap-aicore-dest
+      - name: cap-aicore-db
+      - name: cap-aicore-xsuaa-service
+      - name: cap-aicore-destination-service
+
+  # -------------- SIDECAR MODULE - DB DEPLOYER----------------- 
+  - name: cap-aicore-db-deployer
+  # ------------------------------------------------------------
+    type: hdb
+    path: gen/db
+    requires:
+    - name: cap-aicore-db
+    parameters:
+      buildpack: nodejs_buildpack
+
+      
 resources:
-  # ----------------------- UAA SERVICE ------------------------
-  - name: cap-aicore-uaa
+  # --------------------- DB - HDI CONTAINER------------------------
+  - name: cap-aicore-db
+  # ----------------------------------------------------------------
+    type: com.sap.xs.hdi-container
+    parameters:
+      service: hana
+      service-plan: hdi-shared
+    properties:
+      hdi-service-name: ${service-name}
+
+  # ----------------------- XSUAA SERVICE ------------------------
+  - name: cap-aicore-xsuaa-service
     # ------------------------------------------------------------
     type: org.cloudfoundry.managed-service
     parameters:
       service: xsuaa
+      service-name: cap-aicore-xsuaa-service
       service-plan: application
       path: ./xs-security.json
 
   # -------------------- DESTINATION SERVICE -------------------
-  - name: cap-aicore-dest
+  - name: cap-aicore-destination-service
     # ------------------------------------------------------------
     type: org.cloudfoundry.managed-service
     parameters:
       service: destination
+      service-name: cap-aicore-destination-service
       service-plan: lite
       config:
         init_data:
@@ -59,3 +163,44 @@ resources:
                 clientId: DUMMY_ID # enter in cockpit
                 clientSecret: DUMMY_SECRET # enter in cockpit
                 HTML5.DynamicDestination: true
+          subaccount:
+            destinations:
+            - Authentication: NoAuthentication
+              Description: CAP AI Core Destination Service
+              HTML5.DynamicDestination: true
+              HTML5.ForwardAuthToken: true
+              HTML5.Timeout: 300000
+              WebIDEEnabled: true
+              AppgyverEnabled: true
+              sap.processautomation.enabled: true
+              Name: cap-aicore
+              ProxyType: Internet
+              Type: HTTP
+              URL: ~{srv-api/srv-url}
+            - Authentication: NoAuthentication
+              Description: Cap AI Core Catalog
+              HTML5.DynamicDestination: true
+              HTML5.ForwardAuthToken: true
+              HTML5.Timeout: 300000
+              sap.processautomation.enabled: true
+              AppgyverEnabled: true
+              Name: cap-aicore-catalog
+              ProxyType: Internet
+              Type: HTTP
+              URL: ~{srv-api/srv-url}/ai              
+            existing_destinations_policy: update
+        version: 1.0.0
+    requires:
+      - name: srv-api
+
+
+  # ----------------------- HTML5 Host ------------------------
+  - name: cap-aicore-html5-host
+  # -----------------------------------------------------------
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-plan: app-host
+      service-name: cap-aicore-html5-host-service
+      config:
+        sizeLimit: 5
