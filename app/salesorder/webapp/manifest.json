@@ -17,7 +17,7 @@
         },
         "dataSources": {
             "mainService": {
-                "uri": "/ai/",
+                "uri": "ai/",
                 "type": "OData",
                 "settings": {
                     "annotations": [],
@@ -41,6 +41,10 @@
                 }
             }
         }
+    },
+    "sap.cloud": {
+        "service": "capaicore",
+        "public": true
     },
     "sap.ui": {
         "technology": "UI5",

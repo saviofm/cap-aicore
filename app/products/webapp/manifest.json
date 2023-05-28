@@ -1,7 +1,7 @@
 {
     "_version": "1.49.0",
     "sap.app": {
-        "id": "capaicoreproducts.app.products",
+        "id": "capaicore.app.products",
         "type": "application",
         "i18n": "i18n/i18n.properties",
         "applicationVersion": {
@@ -17,7 +17,7 @@
         },
         "dataSources": {
             "mainService": {
-                "uri": "catalog/",
+                "uri": "ai/",
                 "type": "OData",
                 "settings": {
                     "annotations": [],
@@ -33,7 +33,7 @@
                         "parameters": {},
                         "additionalParameters": "allowed"
                     },
-                    "semanticObject": "AICOREPRODUCTS",
+                    "semanticObject": "PRODUCTSAICORE",
                     "action": "DISPLAY",
                     "title": "{{flpTitle}}",
                     "subTitle": "{{flpSubtitle}}",
@@ -43,7 +43,7 @@
         }
     },
     "sap.cloud": {
-        "service": "capaicoreproducts",
+        "service": "capaicore",
         "public": true
     },
     "sap.ui": {

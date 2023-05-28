@@ -44,12 +44,12 @@ modules:
           - Name: cap-aicore_html5_host
             ServiceInstanceName: cap-aicore-html5-host-service
             ServiceKeyName: cap-aicore_html5_host-key
-            sap.cloud.service: cap-aicore
+            sap.cloud.service: capaicore
           - Authentication: OAuth2UserTokenExchange
             Name: cap-aicore_xsuaa
             ServiceInstanceName: cap-aicore-xsuaa-service
             ServiceKeyName: cap-aicore_xsuaa-key
-            sap.cloud.service: cap-aicore
+            sap.cloud.service: capaicore
           existing_destinations_policy: update    
     build-parameters:
       no-source: true
@@ -71,6 +71,10 @@ modules:
         - capaicoreappproducts.zip
         name: capaicoreappproducts
         target-path: resources/
+      - artifacts:
+        - capaicoreappsalesorder.zip
+        name: capaicoreappproducts
+        target-path: resources/
 
   # --------------------- HTML5 MODULE -------------------------
   - name: capaicoreappproducts
@@ -83,7 +87,17 @@ modules:
       commands:
       - npm run build:cf
       supported-platforms: []
-
+  # --------------------- HTML5 MODULE -------------------------
+  - name: capaicoreappsalesorder
+  # ------------------------------------------------------------
+    type: html5
+    path: app/salesorder
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+      - npm run build:cf
+      supported-platforms: []
 # --------------------- CAP SERVER MODULE ------------------------
   - name: cap-aicore-srv
 # ----------------------------------------------------------------  
