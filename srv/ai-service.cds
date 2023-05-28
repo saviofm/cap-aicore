@@ -6,4 +6,6 @@ service AIService {
     }
 
     action aiProxy(prompt : String) returns GPTTextResponse;
+
+    function gptCall(prompt : String) returns GPTTextResponse;
 }

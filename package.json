@@ -2,14 +2,14 @@
     "name": "cap",
     "version": "1.0.0",
     "description": "A simple CAP project.",
-    "type": "module",
     "repository": "<Add your repository here>",
     "license": "UNLICENSED",
     "private": true,
     "dependencies": {
         "@sap-cloud-sdk/http-client": "^3.0.1",
-        "@sap/cds": "5.9.8",
         "@sap/cds-dk": "4.9.7",
+        "@sap/cds-odata-v2-adapter-proxy": "1.8.11",
+        "@sap/cds": "5.9.8",
         "cds-swagger-ui-express": "^0.4.0",
         "cors": "^2.8.5",
         "express": "^4",
@@ -59,6 +59,12 @@
         "requires": {
             "uaa": {
                 "kind": "xsuaa"
+            },
+            "db": {
+                "model": [
+                  "srv"
+                ],
+                "kind": "sqlite"
             },
             "AICoreAzureOpenAIDestination": {
                 "kind": "rest",

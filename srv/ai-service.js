@@ -1,4 +1,5 @@
-import cds from "@sap/cds";
+const cds = require('@sap/cds');
+const xsenv = require("@sap/xsenv");
 
 // PARAMETERS FOR AZURE OPENAI SERVICES
 const ENGINE = "democode"
@@ -21,30 +22,13 @@ const GPT_PARAMS = {
     stop: STOP_SEQUENCE
 }
 
+
+
 // handler for ai-service.cds
-export class AIService extends cds.ApplicationService {
-
-    /**
-     * Define handlers for CAP actions
-     */
-    async init() {
-        await super.init();
-        this.on("aiProxy", this.aiProxyAction);
-    }
-
-    /**
-    * Action forwarding prompt to through AI Core provided proxy
-    */
-    aiProxyAction = async (req) => {
-        const { prompt } = req.data;
-        const response = await this.callAIProxy(prompt);
-        return { text: response["choices"][0].text };
-    };
-
-
-    /**
-     * Forwards prompt of the payload via a destination (mapped as AICoreAzureOpenAIDestination) through an AI Core deployed service to Azure OpenAI services
-     */
+class AIService extends cds.ApplicationService {
+     /**
+         * Forwards prompt of the payload via a destination (mapped as AICoreAzureOpenAIDestination) through an AI Core deployed service to Azure OpenAI services
+         */
     callAIProxy = async (prompt) => {
         const openai = await cds.connect.to("AICoreAzureOpenAIDestination");
         const payload = {
@@ -55,6 +39,25 @@ export class AIService extends cds.ApplicationService {
             query: "POST /v2/completion",
             data: payload
         });
-        return response;
+    return response;
+    };
+
+    
+    init() {
+        xsenv.loadEnv();
+        
+        this.on("aiProxy",  async (req) => {
+            const { prompt } = req.data;
+            const response = await this.callAIProxy(prompt);
+            return { text: response["choices"][0].text };
+        });
+        this.on("gptCall",  async (req) => {
+            const { prompt } = req.data;
+            const response = await this.callAIProxy(prompt);
+            return { text: response["choices"][0].text };
+        });
+       
+        return super.init();
     }
 }
+module.exports = { AIService };
