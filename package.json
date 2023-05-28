@@ -1,93 +1,97 @@
 {
-    "name": "cap",
-    "version": "1.0.0",
-    "description": "A simple CAP project.",
-    "repository": "<Add your repository here>",
-    "license": "UNLICENSED",
-    "private": true,
-    "dependencies": {
-        "@sap-cloud-sdk/http-client": "^3.0.1",
-        "@sap/cds-dk": "4.9.7",
-        "@sap/cds-odata-v2-adapter-proxy": "1.8.11",
-        "@sap/cds": "5.9.8",
-        "cds-swagger-ui-express": "^0.4.0",
-        "cors": "^2.8.5",
-        "express": "^4",
-        "passport": "^0.6.0"
-       
+  "name": "cap",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap-cloud-sdk/http-client": "^3.0.1",
+    "@sap/cds": "5.9.8",
+    "@sap/cds-dk": "4.9.7",
+    "@sap/cds-odata-v2-adapter-proxy": "1.8.11",
+    "cds-swagger-ui-express": "^0.4.0",
+    "cors": "^2.8.5",
+    "express": "^4",
+    "passport": "^0.6.0"
+  },
+  "devDependencies": {
+    "@sap/cds-compiler": "2.12.0",
+    "@sap/ux-specification": "^1.108.6",
+    "sqlite3": "^5.0.4"
+  },
+  "scripts": {
+    "start": "cds run",
+    "watch": "cds watch --profile hybrid",
+    "build": "mbt build -p=cf -t=./mta_archives --mtar=cap-aicore.mtar",
+    "deploy": "npm run build && cf deploy mta_archives/cap-aicore.mtar",
+    "watch-salesorder": "cds watch --open salesorder/webapp/index.html?sap-ui-xx-viewCache=false"
+  },
+  "engines": {
+    "node": "16.x.x",
+    "npm": "8.x.x"
+  },
+  "eslintConfig": {
+    "extends": "eslint:recommended",
+    "env": {
+      "es2020": true,
+      "node": true,
+      "jest": true,
+      "mocha": true
     },
-    "devDependencies": {
-        "@sap/cds-compiler": "2.12.0",
-        "sqlite3": "^5.0.4"
+    "globals": {
+      "SELECT": true,
+      "INSERT": true,
+      "UPDATE": true,
+      "DELETE": true,
+      "CREATE": true,
+      "DROP": true,
+      "CDL": true,
+      "CQL": true,
+      "CXL": true,
+      "cds": true
     },
-    "scripts": {
-        "start": "cds run",
-        "watch": "cds watch --profile hybrid",
-        "build": "mbt build -p=cf -t=./mta_archives --mtar=cap-aicore.mtar",
-        "deploy": "npm run build && cf deploy mta_archives/cap-aicore.mtar"
-    },
-    "engines": {
-        "node": "16.x.x",
-        "npm": "8.x.x"
-    },
-    "eslintConfig": {
-        "extends": "eslint:recommended",
-        "env": {
-            "es2020": true,
-            "node": true,
-            "jest": true,
-            "mocha": true
-        },
-        "globals": {
-            "SELECT": true,
-            "INSERT": true,
-            "UPDATE": true,
-            "DELETE": true,
-            "CREATE": true,
-            "DROP": true,
-            "CDL": true,
-            "CQL": true,
-            "CXL": true,
-            "cds": true
-        },
-        "rules": {
-            "no-console": "off",
-            "require-atomic-updates": "off"
-        }
-    },
-    "cds": {
-        "i18n": {
-            "folders": [
-                "_i18n",
-                "i18n"
-            ]
-        },
-        "requires": {
-            "uaa": {
-                "kind": "xsuaa"
-            },
-            "db": {
-                "model": [
-                    "db",
-                    "srv"
-                ],
-                "kind": "hana",
-                "pool": {
-                    "acquireTimeoutMillis": 600000,
-                    "min": 0,
-                    "max": 600000
-                }
-            },
-            "AICoreAzureOpenAIDestination": {
-                "kind": "rest",
-                "credentials": {
-                    "destination": "openai-aicore-api",
-                    "path": "/v2/inference/deployments/d5661384a0a8ae13"
-                }
-            }
-        },
-        "hana": {
-            "deploy-format": "hdbtable"
-        }    
+    "rules": {
+      "no-console": "off",
+      "require-atomic-updates": "off"
     }
+  },
+  "cds": {
+    "i18n": {
+      "folders": [
+        "_i18n",
+        "i18n"
+      ]
+    },
+    "requires": {
+      "uaa": {
+        "kind": "xsuaa"
+      },
+      "db": {
+        "model": [
+          "db",
+          "srv"
+        ],
+        "kind": "hana",
+        "pool": {
+          "acquireTimeoutMillis": 600000,
+          "min": 0,
+          "max": 600000
+        }
+      },
+      "AICoreAzureOpenAIDestination": {
+        "kind": "rest",
+        "credentials": {
+          "destination": "openai-aicore-api",
+          "path": "/v2/inference/deployments/d5661384a0a8ae13"
+        }
+      }
+    },
+    "hana": {
+      "deploy-format": "hdbtable"
+    }
+  },
+  "sapux": [
+    "app/salesorder"
+  ]
 }
