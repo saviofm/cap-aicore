@@ -12,13 +12,15 @@
     "@sap/cds-odata-v2-adapter-proxy": "1.8.11",
     "cds-swagger-ui-express": "^0.4.0",
     "cors": "^2.8.5",
+    "hdb": "0.19.3",
     "express": "^4",
     "passport": "^0.6.0"
   },
   "devDependencies": {
     "@sap/cds-compiler": "2.12.0",
     "@sap/ux-specification": "^1.108.6",
-    "sqlite3": "^5.0.4"
+    "@sap/hdi-deploy": "4.3.3",
+    "@sap/ux-ui5-tooling": "^1.5.5"
   },
   "scripts": {
     "start": "cds run",

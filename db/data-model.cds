@@ -35,7 +35,7 @@ annotate Products with @(
   Common.SemanticKey : [EAN],
   UI.Identification  : [{
     $Type : 'UI.DataField',
-    Value : EAN
+    Value : productName
   }]
 ) {
   ID @(
@@ -96,10 +96,12 @@ annotate Products with @(
 entity SalesOrder: cuid, managed {
   salesOrderNumber: String;
   customerName: String;
+  customerMail: String;
   grossAmount: Decimal(13,2);
   salesOrderDate: Date ;
   customerAddress: String;
   salesOrderItems: Composition of many SalesOrderItems on salesOrderItems.salesOrder = $self;
+  salesOrderStatus: String;
 };
 
 
@@ -137,7 +139,11 @@ annotate SalesOrder with @(
         description      : '{i18n>customerName}',
         Common           : {FieldControl : #Mandatory}
     );
-
+    customerMail      @(
+        title            : '{i18n>customerMail}',
+        description      : '{i18n>customerMail}',
+        Common           : {FieldControl : #Mandatory}
+    );
     grossAmount @(
         title            : '{i18n>grossAmount}',
         description      : '{i18n>grossAmount}'
@@ -150,6 +156,10 @@ annotate SalesOrder with @(
     customerAddress @(
         title            : '{i18n>customerAddress}',
         description      : '{i18n>customerAddress}'  
+    );
+    salesOrderStatus @(
+        title            : '{i18n>salesOrderStatus}',
+        description      : '{i18n>salesOrderStatus}'  
     );
     salesOrderItems @(
         title            : '{i18n>salesOrderItems}',
@@ -223,11 +233,43 @@ annotate SalesOrderItems with @(
           }
       }
   );
+  itemNumber @(
+        title            : '{i18n>itemNumber}',
+        description      : '{i18n>itemNumber}'
+  );
   product    @(
       title       : '{i18n>product}',
       description : '{i18n>product}',
       Common      : {
-          FieldControl             : #Mandatory,
+          Text      : {
+                $value                 : product.productName,
+                ![@UI.TextArrangement] : #TextOnly
+            },
+          ValueList                : {
+              CollectionPath : 'Products',
+              SearchSupported: true,
+              Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : 'product_ID',
+                    ValueListProperty : 'ID'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'productName',
+
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'productPrice'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'productStock'
+                }
+              ]
+          },
+          FieldControl             : #Mandatory
       }
   );
 

@@ -32,7 +32,7 @@ annotate AIService.ProductsFiori with @(UI: {
                 Value : productTechSpecs,
                 ![@UI.Importance] : #High
             },
-                        {   
+            {   
                 $Type : 'UI.DataField', 
                 Value : productPrice,
                 ![@UI.Importance] : #High
@@ -81,6 +81,14 @@ annotate AIService.ProductsFiori with @(UI: {
 			Data: [
                 {
                     $Type : 'UI.DataField',
+                    Value: productName
+                },  
+                {
+                    $Type : 'UI.DataField',
+                    Value: EAN
+                },             
+                {
+                    $Type : 'UI.DataField',
                     Value: productDescription
                 },
                 {
@@ -90,10 +98,6 @@ annotate AIService.ProductsFiori with @(UI: {
                 {
                     $Type : 'UI.DataField',
                     Value: productCategory
-                },
-                {
-                    $Type : 'UI.DataField',
-                    Value: productTechSpecs
                 },
                 {
                     $Type : 'UI.DataField',
@@ -197,7 +201,11 @@ annotate AIService.SalesOrderFiori with @(
                 {
                     $Type : 'UI.DataField',
                     Value: salesOrderDate
-                },    
+                }, 
+                {
+                    $Type : 'UI.DataField',
+                    Value: customerMail
+                },
                 {
                     $Type : 'UI.DataField',
                     Value: customerAddress
@@ -207,6 +215,10 @@ annotate AIService.SalesOrderFiori with @(
 
         FieldGroup #Admin: {
             Data : [
+                {
+                    $Type : 'UI.DataField',
+                    Value : salesOrderStatus
+                },
                 {
                     $Type : 'UI.DataField',
                     Value : createdBy
@@ -256,7 +268,7 @@ annotate AIService.SalesOrderItems with @(
             },            
             {   
                 $Type             : 'UI.DataField',
-                Value             : product.productName,
+                Value             : product_ID,
                 ![@UI.Importance] : #High
             },
             {   
