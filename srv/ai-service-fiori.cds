@@ -150,7 +150,11 @@ annotate AIService.SalesOrderFiori with @(
                 Value : salesOrderDate,
                 ![@UI.Importance] : #High
             },
-           
+            {   
+                $Type : 'UI.DataField', 
+                Value : salesOrderStatus,
+                ![@UI.Importance] : #High
+            }
 		],
         PresentationVariant : {
             $Type     : 'UI.PresentationVariantType',
@@ -193,7 +197,6 @@ annotate AIService.SalesOrderFiori with @(
                     $Type : 'UI.DataField',
                     Value: customerName
                 },                
-
                 {
                     $Type : 'UI.DataField',
                     Value: grossAmount
@@ -209,7 +212,12 @@ annotate AIService.SalesOrderFiori with @(
                 {
                     $Type : 'UI.DataField',
                     Value: customerAddress
-                }         
+                },
+                {   
+                    $Type : 'UI.DataField', 
+                    Value : salesOrderStatus,
+                    ![@UI.Importance] : #High
+                }                         
 			]                        
         },
 

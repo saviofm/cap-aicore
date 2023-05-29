@@ -43,7 +43,7 @@
         }
     },
     "sap.cloud": {
-        "service": "capaicore",
+        "service": "cap-aicore",
         "public": true
     },
     "sap.ui": {

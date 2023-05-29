@@ -34,4 +34,10 @@ service AIService {
     action aiProxy(prompt : String) returns GPTTextResponse;
 
     function gptCall(prompt : String) returns GPTTextResponse;
+
+    type Classificacao {
+        classificacao : String;
+    };
+
+    action aiProxyGPTClassificarSolicitacao(mailSubject: String, mailText : String) returns Classificacao;
 }

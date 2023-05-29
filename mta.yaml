@@ -44,12 +44,12 @@ modules:
           - Name: cap-aicore_html5_host
             ServiceInstanceName: cap-aicore-html5-host-service
             ServiceKeyName: cap-aicore_html5_host-key
-            sap.cloud.service: capaicore
+            sap.cloud.service: cap-aicore
           - Authentication: OAuth2UserTokenExchange
             Name: cap-aicore_xsuaa
             ServiceInstanceName: cap-aicore-xsuaa-service
             ServiceKeyName: cap-aicore_xsuaa-key
-            sap.cloud.service: capaicore
+            sap.cloud.service: cap-aicore
           existing_destinations_policy: update    
     build-parameters:
       no-source: true

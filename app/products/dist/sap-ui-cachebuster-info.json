@@ -3,11 +3,11 @@
   "i18n/i18n.properties": 1685298061390,
   "i18n/i18n_en.properties": 1685298026490,
   "i18n/i18n_pt_BR.properties": 1685298039833,
-  "i18n/.vscode/settings.json": 1685298885205,
-  "manifest.json": 1685365308046,
   "Component.js": 1685291557335,
-  "manifest-bundle.zip": 1685365308076,
-  "Component-preload.js": 1685365308719,
+  "manifest.json": 1685372660835,
+  "i18n/.vscode/settings.json": 1685298885205,
+  "manifest-bundle.zip": 1685372660855,
+  "Component-preload.js": 1685372661337,
   "Component-dbg.js": 1685291557335,
   "index.html": 1685291557331
 }

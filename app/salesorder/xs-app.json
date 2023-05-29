@@ -8,7 +8,7 @@
     {
       "source": "^/ai/(.*)$",
       "target": "/ai/$1",
-      "destination": "capaicore",
+      "destination": "cap-aicore",
       "authenticationType": "xsuaa",
       "csrfProtection": false
     },

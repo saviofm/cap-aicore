@@ -1,5 +1,5 @@
 ### ------------------------------------------------------------------------
-## Action
+## Action aiProxy
 POST http://localhost:4004/ai/aiProxy
 Content-Type: application/json
 
@@ -8,10 +8,18 @@ Content-Type: application/json
 }
 
 ### ------------------------------------------------------------------------
-## Fuction
+## Fuction gtpCall
 GET  http://localhost:4004/ai/gptCall(prompt='Please tell me a joke about SAP technology')
 Content-Type: application/json
 
 
 
+### ------------------------------------------------------------------------
+## aiProxyGPTClassificarSolicitacao
+POST http://localhost:4004/ai/aiProxyGPTClassificarSolicitacao
+Content-Type: application/json
 
+{
+    "mailSubject": "Duvida de presente",
+    "mailText": "Opa, tudo bem? \n\n Semana que vem é aniversário da minha esposa e queria dar um celular para ela de presente. Ela gosta de celulares com tela grande. \n\n o que vocês sugerem? Podem dar mais detalhes dos produtos? \n Obrigado! \nEnrico"
+}

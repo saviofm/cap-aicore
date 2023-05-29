@@ -56,6 +56,16 @@ class AIService extends cds.ApplicationService {
             const response = await this.callAIProxy(prompt);
             return { text: response["choices"][0].text };
         });
+        this.on("aiProxyGPTClassificarSolicitacao",  async (req) => {
+            const { mailSubject, mailText } = req.data;
+
+            //Prompt para classifcar o email
+            const prompt = 'Classifique o seguinte assunto do email e texto email em 1 das seguintes catetorias: \n\ categorias: [Produto, Pedido, Outros] \n\ assunto email:' + mailsubject + 'texto email =  ' + mailText;
+
+            const response = await this.callAIProxy(prompt);
+            return { text: response["choices"][0].text };
+        });
+        
        
         return super.init();
     }
