@@ -73,7 +73,7 @@ modules:
         target-path: resources/
       - artifacts:
         - capaicoreappsalesorder.zip
-        name: capaicoreappproducts
+        name: capaicoreappsalesorder
         target-path: resources/
 
   # --------------------- HTML5 MODULE -------------------------

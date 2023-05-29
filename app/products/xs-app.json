@@ -6,8 +6,8 @@
   },
   "routes": [
     {
-      "source": "^/catalog/(.*)$",
-      "target": "/catalog/$1",
+      "source": "^/ai/(.*)$",
+      "target": "/ai/$1",
       "destination": "capaicore",
       "authenticationType": "xsuaa",
       "csrfProtection": false

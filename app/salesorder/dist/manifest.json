@@ -37,7 +37,7 @@
                     "action": "DISPLAY",
                     "title": "{{flpTitle}}",
                     "subTitle": "{{flpSubtitle}}",
-                    "icon": ""
+                    "icon": "sap-icon://sales-order"
                 }
             }
         }
