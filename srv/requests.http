@@ -15,11 +15,41 @@ Content-Type: application/json
 
 
 ### ------------------------------------------------------------------------
-## aiProxyGPTClassificarSolicitacao
+## aiProxyGPTClassificarSolicitacao - Produto
 POST http://localhost:4004/ai/aiProxyGPTClassificarSolicitacao
 Content-Type: application/json
 
 {
     "mailSubject": "Duvida de presente",
     "mailText": "Opa, tudo bem? \n\n Semana que vem é aniversário da minha esposa e queria dar um celular para ela de presente. Ela gosta de celulares com tela grande. \n\n o que vocês sugerem? Podem dar mais detalhes dos produtos? \n Obrigado! \nEnrico"
+}
+
+
+### ------------------------------------------------------------------------
+## aiProxyGPTClassificarSolicitacao
+POST http://localhost:4004/ai/aiProxyGPTClassificarSolicitacao
+Content-Type: application/json
+
+{
+    "mailSubject": "Olá",
+    "mailText": "Opa, tudo bem? \n\n Gostaria de saber os dados de Relação de investidor desse trimestre. . \n Desde já agradeço, \nEnrico"
+}
+
+### ------------------------------------------------------------------------
+## aiProxyGPTRespostaProduto
+POST http://localhost:4004/ai/aiProxyGPTRespostaProduto
+Content-Type: application/json
+
+{
+    "mailText": "Opa, tudo bem? \n\n Semana que vem é aniversário da minha esposa e queria dar um celular para ela de presente. Ela gosta de celulares com tela grande. \n\n o que vocês sugerem? Podem dar mais detalhes dos produtos? \n Obrigado! \nEnrico"
+}
+
+
+### ------------------------------------------------------------------------
+## aiProxyGPTRespostaProduto
+POST http://localhost:4004/ai/aiProxyGPTRespostaPedido
+Content-Type: application/json
+
+{
+    "mailText": "Opa, tudo bem? \n\n Meu pedido ainda não chegou, você pode verificar o status?\n Obrigado! \nEnrico"
 }

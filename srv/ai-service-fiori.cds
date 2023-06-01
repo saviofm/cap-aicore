@@ -29,11 +29,6 @@ annotate AIService.ProductsFiori with @(UI: {
             },
             {   
                 $Type : 'UI.DataField', 
-                Value : productTechSpecs,
-                ![@UI.Importance] : #High
-            },
-            {   
-                $Type : 'UI.DataField', 
                 Value : productPrice,
                 ![@UI.Importance] : #High
             },
@@ -98,6 +93,11 @@ annotate AIService.ProductsFiori with @(UI: {
                 {
                     $Type : 'UI.DataField',
                     Value: productCategory
+                },
+                {   
+                $Type : 'UI.DataField', 
+                Value : productTechSpecs,
+                ![@UI.Importance] : #High
                 },
                 {
                     $Type : 'UI.DataField',

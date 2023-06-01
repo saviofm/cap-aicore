@@ -9,7 +9,7 @@
 |**Service Type**<br>Local Cap|
 |**Service URL**<br>http://localhost:4004/ai/
 |**Module Name**<br>salesorder|
-|**Application Title**<br>Salers Order|
+|**Application Title**<br>Sales Order|
 |**Namespace**<br>capaicore.app|
 |**UI5 Theme**<br>sap_horizon|
 |**UI5 Version**<br>1.114.0|

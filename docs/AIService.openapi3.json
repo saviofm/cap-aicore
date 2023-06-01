@@ -1,0 +1,5307 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Service for namespace AIService",
+    "description": "This service is located at [/ai/](/ai/)",
+    "version": ""
+  },
+  "x-sap-api-type": "ODATAV4",
+  "x-odata-version": "4.0",
+  "x-sap-shortText": "Service for namespace AIService",
+  "servers": [
+    {
+      "url": "/ai"
+    }
+  ],
+  "tags": [
+    {
+      "name": "{i18n>Products}",
+      "description": "{i18n>Products}"
+    },
+    {
+      "name": "{i18n>Products}",
+      "description": "{i18n>Products}"
+    },
+    {
+      "name": "{i18n>SalesOrder}",
+      "description": "{i18n>SalesOrder}"
+    },
+    {
+      "name": "{i18n>SalesOrder}",
+      "description": "{i18n>SalesOrder}"
+    },
+    {
+      "name": "{i18n>SalesOrderItems}",
+      "description": "{i18n>SalesOrderItems}"
+    }
+  ],
+  "paths": {
+    "/ProductsFiori": {
+      "get": {
+        "summary": "Retrieve a list of products fiori.",
+        "tags": [
+          "{i18n>Products}"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "name": "$filter",
+            "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ID",
+                  "ID desc",
+                  "createdAt",
+                  "createdAt desc",
+                  "createdBy",
+                  "createdBy desc",
+                  "modifiedAt",
+                  "modifiedAt desc",
+                  "modifiedBy",
+                  "modifiedBy desc",
+                  "EAN",
+                  "EAN desc",
+                  "productName",
+                  "productName desc",
+                  "productDescription",
+                  "productDescription desc",
+                  "productCategory",
+                  "productCategory desc",
+                  "productBrand",
+                  "productBrand desc",
+                  "productTechSpecs",
+                  "productTechSpecs desc",
+                  "productPrice",
+                  "productPrice desc",
+                  "productStock",
+                  "productStock desc",
+                  "IsActiveEntity",
+                  "IsActiveEntity desc",
+                  "HasActiveEntity",
+                  "HasActiveEntity desc",
+                  "HasDraftEntity",
+                  "HasDraftEntity desc"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ID",
+                  "createdAt",
+                  "createdBy",
+                  "modifiedAt",
+                  "modifiedBy",
+                  "EAN",
+                  "productName",
+                  "productDescription",
+                  "productCategory",
+                  "productBrand",
+                  "productTechSpecs",
+                  "productPrice",
+                  "productStock",
+                  "IsActiveEntity",
+                  "HasActiveEntity",
+                  "HasDraftEntity"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "DraftAdministrativeData",
+                  "SiblingEntity"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved products fiori",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Collection of ProductsFiori",
+                  "properties": {
+                    "@odata.count": {
+                      "$ref": "#/components/schemas/count"
+                    },
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/AIService.ProductsFiori"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a single products fiori.",
+        "tags": [
+          "{i18n>Products}"
+        ],
+        "requestBody": {
+          "description": "{i18n>Products}",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AIService.ProductsFiori-create"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created products fiori",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AIService.ProductsFiori"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/ProductsFiori(ID={ID},IsActiveEntity='{IsActiveEntity}')": {
+      "parameters": [
+        {
+          "description": "key: ID",
+          "in": "path",
+          "name": "ID",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          }
+        },
+        {
+          "description": "key: IsActiveEntity",
+          "in": "path",
+          "name": "IsActiveEntity",
+          "required": true,
+          "schema": {
+            "type": "boolean",
+            "default": true
+          }
+        }
+      ],
+      "get": {
+        "summary": "Retrieve a single products fiori.",
+        "tags": [
+          "{i18n>Products}"
+        ],
+        "parameters": [
+          {
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ID",
+                  "createdAt",
+                  "createdBy",
+                  "modifiedAt",
+                  "modifiedBy",
+                  "EAN",
+                  "productName",
+                  "productDescription",
+                  "productCategory",
+                  "productBrand",
+                  "productTechSpecs",
+                  "productPrice",
+                  "productStock",
+                  "IsActiveEntity",
+                  "HasActiveEntity",
+                  "HasDraftEntity"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "DraftAdministrativeData",
+                  "SiblingEntity"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved products fiori",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AIService.ProductsFiori"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Change a single products fiori.",
+        "tags": [
+          "{i18n>Products}"
+        ],
+        "requestBody": {
+          "description": "{i18n>Products}",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AIService.ProductsFiori-update"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a single products fiori.",
+        "tags": [
+          "{i18n>Products}"
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/ProductsFiori(ID={ID},IsActiveEntity='{IsActiveEntity}')/AIService.draftPrepare": {
+      "post": {
+        "summary": "Invoke action draftPrepare",
+        "tags": [
+          "{i18n>Products}"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/AIService.ProductsFiori"
+                    }
+                  ],
+                  "nullable": true
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "parameters": [
+          {
+            "description": "key: ID",
+            "in": "path",
+            "name": "ID",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "01234567-89ab-cdef-0123-456789abcdef"
+            }
+          },
+          {
+            "description": "key: IsActiveEntity",
+            "in": "path",
+            "name": "IsActiveEntity",
+            "required": true,
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Action parameters",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "SideEffectsQualifier": {
+                    "type": "string",
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ProductsFiori(ID={ID},IsActiveEntity='{IsActiveEntity}')/AIService.draftActivate": {
+      "post": {
+        "summary": "Invoke action draftActivate",
+        "tags": [
+          "{i18n>Products}"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/AIService.ProductsFiori"
+                    }
+                  ],
+                  "nullable": true
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "parameters": [
+          {
+            "description": "key: ID",
+            "in": "path",
+            "name": "ID",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "01234567-89ab-cdef-0123-456789abcdef"
+            }
+          },
+          {
+            "description": "key: IsActiveEntity",
+            "in": "path",
+            "name": "IsActiveEntity",
+            "required": true,
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        ]
+      }
+    },
+    "/ProductsFiori(ID={ID},IsActiveEntity='{IsActiveEntity}')/AIService.draftEdit": {
+      "post": {
+        "summary": "Invoke action draftEdit",
+        "tags": [
+          "{i18n>Products}"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/AIService.ProductsFiori"
+                    }
+                  ],
+                  "nullable": true
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "parameters": [
+          {
+            "description": "key: ID",
+            "in": "path",
+            "name": "ID",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "01234567-89ab-cdef-0123-456789abcdef"
+            }
+          },
+          {
+            "description": "key: IsActiveEntity",
+            "in": "path",
+            "name": "IsActiveEntity",
+            "required": true,
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Action parameters",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "PreserveChanges": {
+                    "type": "boolean",
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ProductsFiori(ID={ID},IsActiveEntity='{IsActiveEntity}')/DraftAdministrativeData": {
+      "parameters": [
+        {
+          "description": "key: ID",
+          "in": "path",
+          "name": "ID",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          }
+        },
+        {
+          "description": "key: IsActiveEntity",
+          "in": "path",
+          "name": "IsActiveEntity",
+          "required": true,
+          "schema": {
+            "type": "boolean",
+            "default": true
+          }
+        }
+      ],
+      "get": {
+        "summary": "Retrieve draft administrative data of a {i18n> products}.",
+        "tags": [
+          "{i18n>Products}"
+        ],
+        "parameters": [
+          {
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "DraftUUID",
+                  "CreationDateTime",
+                  "CreatedByUser",
+                  "DraftIsCreatedByMe",
+                  "LastChangeDateTime",
+                  "LastChangedByUser",
+                  "InProcessByUser",
+                  "DraftIsProcessedByMe"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved draft administrative data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AIService.DraftAdministrativeData"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Change draft administrative data of a {i18n> products}.",
+        "tags": [
+          "{i18n>Products}"
+        ],
+        "requestBody": {
+          "description": "New property values",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AIService.DraftAdministrativeData-update"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete draft administrative data of a {i18n> products}.",
+        "tags": [
+          "{i18n>Products}"
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/ProductsFiori(ID={ID},IsActiveEntity='{IsActiveEntity}')/SiblingEntity": {
+      "parameters": [
+        {
+          "description": "key: ID",
+          "in": "path",
+          "name": "ID",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          }
+        },
+        {
+          "description": "key: IsActiveEntity",
+          "in": "path",
+          "name": "IsActiveEntity",
+          "required": true,
+          "schema": {
+            "type": "boolean",
+            "default": true
+          }
+        }
+      ],
+      "get": {
+        "summary": "Retrieve sibling entity of a {i18n> products}.",
+        "tags": [
+          "{i18n>Products}"
+        ],
+        "parameters": [
+          {
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ID",
+                  "createdAt",
+                  "createdBy",
+                  "modifiedAt",
+                  "modifiedBy",
+                  "EAN",
+                  "productName",
+                  "productDescription",
+                  "productCategory",
+                  "productBrand",
+                  "productTechSpecs",
+                  "productPrice",
+                  "productStock",
+                  "IsActiveEntity",
+                  "HasActiveEntity",
+                  "HasDraftEntity"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "DraftAdministrativeData",
+                  "SiblingEntity"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved sibling entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AIService.ProductsFiori"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/ProductsFiori(ID={ID},IsActiveEntity='{IsActiveEntity}')/SiblingEntity/AIService.draftPrepare": {
+      "post": {
+        "summary": "Invoke action draftPrepare",
+        "tags": [
+          "{i18n>Products}"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/AIService.ProductsFiori"
+                    }
+                  ],
+                  "nullable": true
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "parameters": [
+          {
+            "description": "key: ID",
+            "in": "path",
+            "name": "ID",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "01234567-89ab-cdef-0123-456789abcdef"
+            }
+          },
+          {
+            "description": "key: IsActiveEntity",
+            "in": "path",
+            "name": "IsActiveEntity",
+            "required": true,
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Action parameters",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "SideEffectsQualifier": {
+                    "type": "string",
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ProductsFiori(ID={ID},IsActiveEntity='{IsActiveEntity}')/SiblingEntity/AIService.draftActivate": {
+      "post": {
+        "summary": "Invoke action draftActivate",
+        "tags": [
+          "{i18n>Products}"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/AIService.ProductsFiori"
+                    }
+                  ],
+                  "nullable": true
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "parameters": [
+          {
+            "description": "key: ID",
+            "in": "path",
+            "name": "ID",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "01234567-89ab-cdef-0123-456789abcdef"
+            }
+          },
+          {
+            "description": "key: IsActiveEntity",
+            "in": "path",
+            "name": "IsActiveEntity",
+            "required": true,
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        ]
+      }
+    },
+    "/ProductsFiori(ID={ID},IsActiveEntity='{IsActiveEntity}')/SiblingEntity/AIService.draftEdit": {
+      "post": {
+        "summary": "Invoke action draftEdit",
+        "tags": [
+          "{i18n>Products}"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/AIService.ProductsFiori"
+                    }
+                  ],
+                  "nullable": true
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "parameters": [
+          {
+            "description": "key: ID",
+            "in": "path",
+            "name": "ID",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "01234567-89ab-cdef-0123-456789abcdef"
+            }
+          },
+          {
+            "description": "key: IsActiveEntity",
+            "in": "path",
+            "name": "IsActiveEntity",
+            "required": true,
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Action parameters",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "PreserveChanges": {
+                    "type": "boolean",
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Products": {
+      "get": {
+        "summary": "Retrieve a list of products.",
+        "tags": [
+          "{i18n>Products}"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "name": "$filter",
+            "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ID",
+                  "ID desc",
+                  "createdAt",
+                  "createdAt desc",
+                  "createdBy",
+                  "createdBy desc",
+                  "modifiedAt",
+                  "modifiedAt desc",
+                  "modifiedBy",
+                  "modifiedBy desc",
+                  "EAN",
+                  "EAN desc",
+                  "productName",
+                  "productName desc",
+                  "productDescription",
+                  "productDescription desc",
+                  "productCategory",
+                  "productCategory desc",
+                  "productBrand",
+                  "productBrand desc",
+                  "productTechSpecs",
+                  "productTechSpecs desc",
+                  "productPrice",
+                  "productPrice desc",
+                  "productStock",
+                  "productStock desc"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ID",
+                  "createdAt",
+                  "createdBy",
+                  "modifiedAt",
+                  "modifiedBy",
+                  "EAN",
+                  "productName",
+                  "productDescription",
+                  "productCategory",
+                  "productBrand",
+                  "productTechSpecs",
+                  "productPrice",
+                  "productStock"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved products",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Collection of Products",
+                  "properties": {
+                    "@odata.count": {
+                      "$ref": "#/components/schemas/count"
+                    },
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/AIService.Products"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a single product.",
+        "tags": [
+          "{i18n>Products}"
+        ],
+        "requestBody": {
+          "description": "{i18n>Products}",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AIService.Products-create"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created product",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AIService.Products"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/Products({ID})": {
+      "parameters": [
+        {
+          "description": "key: ID",
+          "in": "path",
+          "name": "ID",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Retrieve a single product.",
+        "tags": [
+          "{i18n>Products}"
+        ],
+        "parameters": [
+          {
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ID",
+                  "createdAt",
+                  "createdBy",
+                  "modifiedAt",
+                  "modifiedBy",
+                  "EAN",
+                  "productName",
+                  "productDescription",
+                  "productCategory",
+                  "productBrand",
+                  "productTechSpecs",
+                  "productPrice",
+                  "productStock"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved product",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AIService.Products"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Change a single product.",
+        "tags": [
+          "{i18n>Products}"
+        ],
+        "requestBody": {
+          "description": "{i18n>Products}",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AIService.Products-update"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a single product.",
+        "tags": [
+          "{i18n>Products}"
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/SalesOrderFiori": {
+      "get": {
+        "summary": "Retrieve a list of sales order fiori.",
+        "tags": [
+          "{i18n>SalesOrder}"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "name": "$filter",
+            "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ID",
+                  "ID desc",
+                  "createdAt",
+                  "createdAt desc",
+                  "createdBy",
+                  "createdBy desc",
+                  "modifiedAt",
+                  "modifiedAt desc",
+                  "modifiedBy",
+                  "modifiedBy desc",
+                  "salesOrderNumber",
+                  "salesOrderNumber desc",
+                  "customerName",
+                  "customerName desc",
+                  "customerMail",
+                  "customerMail desc",
+                  "grossAmount",
+                  "grossAmount desc",
+                  "salesOrderDate",
+                  "salesOrderDate desc",
+                  "customerAddress",
+                  "customerAddress desc",
+                  "salesOrderStatus",
+                  "salesOrderStatus desc",
+                  "IsActiveEntity",
+                  "IsActiveEntity desc",
+                  "HasActiveEntity",
+                  "HasActiveEntity desc",
+                  "HasDraftEntity",
+                  "HasDraftEntity desc"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ID",
+                  "createdAt",
+                  "createdBy",
+                  "modifiedAt",
+                  "modifiedBy",
+                  "salesOrderNumber",
+                  "customerName",
+                  "customerMail",
+                  "grossAmount",
+                  "salesOrderDate",
+                  "customerAddress",
+                  "salesOrderStatus",
+                  "IsActiveEntity",
+                  "HasActiveEntity",
+                  "HasDraftEntity"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "salesOrderItems",
+                  "DraftAdministrativeData",
+                  "SiblingEntity"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved sales order fiori",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Collection of SalesOrderFiori",
+                  "properties": {
+                    "@odata.count": {
+                      "$ref": "#/components/schemas/count"
+                    },
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/AIService.SalesOrderFiori"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a single sales order fiori.",
+        "tags": [
+          "{i18n>SalesOrder}"
+        ],
+        "requestBody": {
+          "description": "{i18n>SalesOrder}",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AIService.SalesOrderFiori-create"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created sales order fiori",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AIService.SalesOrderFiori"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/SalesOrderFiori(ID={ID},IsActiveEntity='{IsActiveEntity}')": {
+      "parameters": [
+        {
+          "description": "key: ID",
+          "in": "path",
+          "name": "ID",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          }
+        },
+        {
+          "description": "key: IsActiveEntity",
+          "in": "path",
+          "name": "IsActiveEntity",
+          "required": true,
+          "schema": {
+            "type": "boolean",
+            "default": true
+          }
+        }
+      ],
+      "get": {
+        "summary": "Retrieve a single sales order fiori.",
+        "tags": [
+          "{i18n>SalesOrder}"
+        ],
+        "parameters": [
+          {
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ID",
+                  "createdAt",
+                  "createdBy",
+                  "modifiedAt",
+                  "modifiedBy",
+                  "salesOrderNumber",
+                  "customerName",
+                  "customerMail",
+                  "grossAmount",
+                  "salesOrderDate",
+                  "customerAddress",
+                  "salesOrderStatus",
+                  "IsActiveEntity",
+                  "HasActiveEntity",
+                  "HasDraftEntity"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "salesOrderItems",
+                  "DraftAdministrativeData",
+                  "SiblingEntity"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved sales order fiori",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AIService.SalesOrderFiori"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Change a single sales order fiori.",
+        "tags": [
+          "{i18n>SalesOrder}"
+        ],
+        "requestBody": {
+          "description": "{i18n>SalesOrder}",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AIService.SalesOrderFiori-update"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a single sales order fiori.",
+        "tags": [
+          "{i18n>SalesOrder}"
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/SalesOrderFiori(ID={ID},IsActiveEntity='{IsActiveEntity}')/AIService.draftPrepare": {
+      "post": {
+        "summary": "Invoke action draftPrepare",
+        "tags": [
+          "{i18n>SalesOrder}"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/AIService.SalesOrderFiori"
+                    }
+                  ],
+                  "nullable": true
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "parameters": [
+          {
+            "description": "key: ID",
+            "in": "path",
+            "name": "ID",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "01234567-89ab-cdef-0123-456789abcdef"
+            }
+          },
+          {
+            "description": "key: IsActiveEntity",
+            "in": "path",
+            "name": "IsActiveEntity",
+            "required": true,
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Action parameters",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "SideEffectsQualifier": {
+                    "type": "string",
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/SalesOrderFiori(ID={ID},IsActiveEntity='{IsActiveEntity}')/AIService.draftActivate": {
+      "post": {
+        "summary": "Invoke action draftActivate",
+        "tags": [
+          "{i18n>SalesOrder}"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/AIService.SalesOrderFiori"
+                    }
+                  ],
+                  "nullable": true
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "parameters": [
+          {
+            "description": "key: ID",
+            "in": "path",
+            "name": "ID",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "01234567-89ab-cdef-0123-456789abcdef"
+            }
+          },
+          {
+            "description": "key: IsActiveEntity",
+            "in": "path",
+            "name": "IsActiveEntity",
+            "required": true,
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        ]
+      }
+    },
+    "/SalesOrderFiori(ID={ID},IsActiveEntity='{IsActiveEntity}')/AIService.draftEdit": {
+      "post": {
+        "summary": "Invoke action draftEdit",
+        "tags": [
+          "{i18n>SalesOrder}"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/AIService.SalesOrderFiori"
+                    }
+                  ],
+                  "nullable": true
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "parameters": [
+          {
+            "description": "key: ID",
+            "in": "path",
+            "name": "ID",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "01234567-89ab-cdef-0123-456789abcdef"
+            }
+          },
+          {
+            "description": "key: IsActiveEntity",
+            "in": "path",
+            "name": "IsActiveEntity",
+            "required": true,
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Action parameters",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "PreserveChanges": {
+                    "type": "boolean",
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/SalesOrderFiori(ID={ID},IsActiveEntity='{IsActiveEntity}')/salesOrderItems": {
+      "parameters": [
+        {
+          "description": "key: ID",
+          "in": "path",
+          "name": "ID",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          }
+        },
+        {
+          "description": "key: IsActiveEntity",
+          "in": "path",
+          "name": "IsActiveEntity",
+          "required": true,
+          "schema": {
+            "type": "boolean",
+            "default": true
+          }
+        }
+      ],
+      "get": {
+        "summary": "Retrieve a list of sales order items of a {i18n> sales order}.",
+        "tags": [
+          "{i18n>SalesOrder}",
+          "{i18n>SalesOrderItems}"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "name": "$filter",
+            "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ID",
+                  "ID desc",
+                  "createdAt",
+                  "createdAt desc",
+                  "createdBy",
+                  "createdBy desc",
+                  "modifiedAt",
+                  "modifiedAt desc",
+                  "modifiedBy",
+                  "modifiedBy desc",
+                  "salesOrder_ID",
+                  "salesOrder_ID desc",
+                  "itemNumber",
+                  "itemNumber desc",
+                  "product_ID",
+                  "product_ID desc",
+                  "quantity",
+                  "quantity desc",
+                  "IsActiveEntity",
+                  "IsActiveEntity desc",
+                  "HasActiveEntity",
+                  "HasActiveEntity desc",
+                  "HasDraftEntity",
+                  "HasDraftEntity desc"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ID",
+                  "createdAt",
+                  "createdBy",
+                  "modifiedAt",
+                  "modifiedBy",
+                  "salesOrder_ID",
+                  "itemNumber",
+                  "product_ID",
+                  "quantity",
+                  "IsActiveEntity",
+                  "HasActiveEntity",
+                  "HasDraftEntity"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "salesOrder",
+                  "product",
+                  "DraftAdministrativeData",
+                  "SiblingEntity"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved sales order items",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Collection of SalesOrderItems",
+                  "properties": {
+                    "@odata.count": {
+                      "$ref": "#/components/schemas/count"
+                    },
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/AIService.SalesOrderItems"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a single sales order item of a {i18n> sales order}.",
+        "tags": [
+          "{i18n>SalesOrder}",
+          "{i18n>SalesOrderItems}"
+        ],
+        "requestBody": {
+          "description": "{i18n>SalesOrderItems}",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AIService.SalesOrderItems-create"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created sales order item",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AIService.SalesOrderItems"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/SalesOrderFiori(ID={ID},IsActiveEntity='{IsActiveEntity}')/DraftAdministrativeData": {
+      "parameters": [
+        {
+          "description": "key: ID",
+          "in": "path",
+          "name": "ID",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          }
+        },
+        {
+          "description": "key: IsActiveEntity",
+          "in": "path",
+          "name": "IsActiveEntity",
+          "required": true,
+          "schema": {
+            "type": "boolean",
+            "default": true
+          }
+        }
+      ],
+      "get": {
+        "summary": "Retrieve draft administrative data of a {i18n> sales order}.",
+        "tags": [
+          "{i18n>SalesOrder}"
+        ],
+        "parameters": [
+          {
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "DraftUUID",
+                  "CreationDateTime",
+                  "CreatedByUser",
+                  "DraftIsCreatedByMe",
+                  "LastChangeDateTime",
+                  "LastChangedByUser",
+                  "InProcessByUser",
+                  "DraftIsProcessedByMe"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved draft administrative data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AIService.DraftAdministrativeData"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Change draft administrative data of a {i18n> sales order}.",
+        "tags": [
+          "{i18n>SalesOrder}"
+        ],
+        "requestBody": {
+          "description": "New property values",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AIService.DraftAdministrativeData-update"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete draft administrative data of a {i18n> sales order}.",
+        "tags": [
+          "{i18n>SalesOrder}"
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/SalesOrderFiori(ID={ID},IsActiveEntity='{IsActiveEntity}')/SiblingEntity": {
+      "parameters": [
+        {
+          "description": "key: ID",
+          "in": "path",
+          "name": "ID",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          }
+        },
+        {
+          "description": "key: IsActiveEntity",
+          "in": "path",
+          "name": "IsActiveEntity",
+          "required": true,
+          "schema": {
+            "type": "boolean",
+            "default": true
+          }
+        }
+      ],
+      "get": {
+        "summary": "Retrieve sibling entity of a {i18n> sales order}.",
+        "tags": [
+          "{i18n>SalesOrder}"
+        ],
+        "parameters": [
+          {
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ID",
+                  "createdAt",
+                  "createdBy",
+                  "modifiedAt",
+                  "modifiedBy",
+                  "salesOrderNumber",
+                  "customerName",
+                  "customerMail",
+                  "grossAmount",
+                  "salesOrderDate",
+                  "customerAddress",
+                  "salesOrderStatus",
+                  "IsActiveEntity",
+                  "HasActiveEntity",
+                  "HasDraftEntity"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "salesOrderItems",
+                  "DraftAdministrativeData",
+                  "SiblingEntity"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved sibling entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AIService.SalesOrderFiori"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/SalesOrderFiori(ID={ID},IsActiveEntity='{IsActiveEntity}')/SiblingEntity/AIService.draftPrepare": {
+      "post": {
+        "summary": "Invoke action draftPrepare",
+        "tags": [
+          "{i18n>SalesOrder}"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/AIService.SalesOrderFiori"
+                    }
+                  ],
+                  "nullable": true
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "parameters": [
+          {
+            "description": "key: ID",
+            "in": "path",
+            "name": "ID",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "01234567-89ab-cdef-0123-456789abcdef"
+            }
+          },
+          {
+            "description": "key: IsActiveEntity",
+            "in": "path",
+            "name": "IsActiveEntity",
+            "required": true,
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Action parameters",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "SideEffectsQualifier": {
+                    "type": "string",
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/SalesOrderFiori(ID={ID},IsActiveEntity='{IsActiveEntity}')/SiblingEntity/AIService.draftActivate": {
+      "post": {
+        "summary": "Invoke action draftActivate",
+        "tags": [
+          "{i18n>SalesOrder}"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/AIService.SalesOrderFiori"
+                    }
+                  ],
+                  "nullable": true
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "parameters": [
+          {
+            "description": "key: ID",
+            "in": "path",
+            "name": "ID",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "01234567-89ab-cdef-0123-456789abcdef"
+            }
+          },
+          {
+            "description": "key: IsActiveEntity",
+            "in": "path",
+            "name": "IsActiveEntity",
+            "required": true,
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        ]
+      }
+    },
+    "/SalesOrderFiori(ID={ID},IsActiveEntity='{IsActiveEntity}')/SiblingEntity/AIService.draftEdit": {
+      "post": {
+        "summary": "Invoke action draftEdit",
+        "tags": [
+          "{i18n>SalesOrder}"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/AIService.SalesOrderFiori"
+                    }
+                  ],
+                  "nullable": true
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "parameters": [
+          {
+            "description": "key: ID",
+            "in": "path",
+            "name": "ID",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "01234567-89ab-cdef-0123-456789abcdef"
+            }
+          },
+          {
+            "description": "key: IsActiveEntity",
+            "in": "path",
+            "name": "IsActiveEntity",
+            "required": true,
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Action parameters",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "PreserveChanges": {
+                    "type": "boolean",
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/SalesOrder": {
+      "get": {
+        "summary": "Retrieve a list of sales order.",
+        "tags": [
+          "{i18n>SalesOrder}"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "name": "$filter",
+            "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ID",
+                  "ID desc",
+                  "createdAt",
+                  "createdAt desc",
+                  "createdBy",
+                  "createdBy desc",
+                  "modifiedAt",
+                  "modifiedAt desc",
+                  "modifiedBy",
+                  "modifiedBy desc",
+                  "salesOrderNumber",
+                  "salesOrderNumber desc",
+                  "customerName",
+                  "customerName desc",
+                  "customerMail",
+                  "customerMail desc",
+                  "grossAmount",
+                  "grossAmount desc",
+                  "salesOrderDate",
+                  "salesOrderDate desc",
+                  "customerAddress",
+                  "customerAddress desc",
+                  "salesOrderStatus",
+                  "salesOrderStatus desc"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ID",
+                  "createdAt",
+                  "createdBy",
+                  "modifiedAt",
+                  "modifiedBy",
+                  "salesOrderNumber",
+                  "customerName",
+                  "customerMail",
+                  "grossAmount",
+                  "salesOrderDate",
+                  "customerAddress",
+                  "salesOrderStatus"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "salesOrderItems"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved sales order",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Collection of SalesOrder",
+                  "properties": {
+                    "@odata.count": {
+                      "$ref": "#/components/schemas/count"
+                    },
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/AIService.SalesOrder"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a single sales order.",
+        "tags": [
+          "{i18n>SalesOrder}"
+        ],
+        "requestBody": {
+          "description": "{i18n>SalesOrder}",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AIService.SalesOrder-create"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created sales order",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AIService.SalesOrder"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/SalesOrder({ID})": {
+      "parameters": [
+        {
+          "description": "key: ID",
+          "in": "path",
+          "name": "ID",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Retrieve a single sales order.",
+        "tags": [
+          "{i18n>SalesOrder}"
+        ],
+        "parameters": [
+          {
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ID",
+                  "createdAt",
+                  "createdBy",
+                  "modifiedAt",
+                  "modifiedBy",
+                  "salesOrderNumber",
+                  "customerName",
+                  "customerMail",
+                  "grossAmount",
+                  "salesOrderDate",
+                  "customerAddress",
+                  "salesOrderStatus"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "salesOrderItems"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved sales order",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AIService.SalesOrder"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Change a single sales order.",
+        "tags": [
+          "{i18n>SalesOrder}"
+        ],
+        "requestBody": {
+          "description": "{i18n>SalesOrder}",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AIService.SalesOrder-update"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a single sales order.",
+        "tags": [
+          "{i18n>SalesOrder}"
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/SalesOrder({ID})/salesOrderItems": {
+      "parameters": [
+        {
+          "description": "key: ID",
+          "in": "path",
+          "name": "ID",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Retrieve a list of sales order items of a {i18n> sales order}.",
+        "tags": [
+          "{i18n>SalesOrder}",
+          "{i18n>SalesOrderItems}"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "name": "$filter",
+            "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ID",
+                  "ID desc",
+                  "createdAt",
+                  "createdAt desc",
+                  "createdBy",
+                  "createdBy desc",
+                  "modifiedAt",
+                  "modifiedAt desc",
+                  "modifiedBy",
+                  "modifiedBy desc",
+                  "salesOrder_ID",
+                  "salesOrder_ID desc",
+                  "itemNumber",
+                  "itemNumber desc",
+                  "product_ID",
+                  "product_ID desc",
+                  "quantity",
+                  "quantity desc",
+                  "IsActiveEntity",
+                  "IsActiveEntity desc",
+                  "HasActiveEntity",
+                  "HasActiveEntity desc",
+                  "HasDraftEntity",
+                  "HasDraftEntity desc"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ID",
+                  "createdAt",
+                  "createdBy",
+                  "modifiedAt",
+                  "modifiedBy",
+                  "salesOrder_ID",
+                  "itemNumber",
+                  "product_ID",
+                  "quantity",
+                  "IsActiveEntity",
+                  "HasActiveEntity",
+                  "HasDraftEntity"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "salesOrder",
+                  "product",
+                  "DraftAdministrativeData",
+                  "SiblingEntity"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved sales order items",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Collection of SalesOrderItems",
+                  "properties": {
+                    "@odata.count": {
+                      "$ref": "#/components/schemas/count"
+                    },
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/AIService.SalesOrderItems"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a single sales order item of a {i18n> sales order}.",
+        "tags": [
+          "{i18n>SalesOrder}",
+          "{i18n>SalesOrderItems}"
+        ],
+        "requestBody": {
+          "description": "{i18n>SalesOrderItems}",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AIService.SalesOrderItems-create"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created sales order item",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AIService.SalesOrderItems"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/SalesOrderItems": {
+      "get": {
+        "summary": "Retrieve a list of sales order items.",
+        "tags": [
+          "{i18n>SalesOrderItems}"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "name": "$filter",
+            "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ID",
+                  "ID desc",
+                  "createdAt",
+                  "createdAt desc",
+                  "createdBy",
+                  "createdBy desc",
+                  "modifiedAt",
+                  "modifiedAt desc",
+                  "modifiedBy",
+                  "modifiedBy desc",
+                  "salesOrder_ID",
+                  "salesOrder_ID desc",
+                  "itemNumber",
+                  "itemNumber desc",
+                  "product_ID",
+                  "product_ID desc",
+                  "quantity",
+                  "quantity desc",
+                  "IsActiveEntity",
+                  "IsActiveEntity desc",
+                  "HasActiveEntity",
+                  "HasActiveEntity desc",
+                  "HasDraftEntity",
+                  "HasDraftEntity desc"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ID",
+                  "createdAt",
+                  "createdBy",
+                  "modifiedAt",
+                  "modifiedBy",
+                  "salesOrder_ID",
+                  "itemNumber",
+                  "product_ID",
+                  "quantity",
+                  "IsActiveEntity",
+                  "HasActiveEntity",
+                  "HasDraftEntity"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "salesOrder",
+                  "product",
+                  "DraftAdministrativeData",
+                  "SiblingEntity"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved sales order items",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Collection of SalesOrderItems",
+                  "properties": {
+                    "@odata.count": {
+                      "$ref": "#/components/schemas/count"
+                    },
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/AIService.SalesOrderItems"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a single sales order item.",
+        "tags": [
+          "{i18n>SalesOrderItems}"
+        ],
+        "requestBody": {
+          "description": "{i18n>SalesOrderItems}",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AIService.SalesOrderItems-create"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created sales order item",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AIService.SalesOrderItems"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/SalesOrderItems(ID={ID},IsActiveEntity='{IsActiveEntity}')": {
+      "parameters": [
+        {
+          "description": "ID",
+          "in": "path",
+          "name": "ID",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          }
+        },
+        {
+          "description": "key: IsActiveEntity",
+          "in": "path",
+          "name": "IsActiveEntity",
+          "required": true,
+          "schema": {
+            "type": "boolean",
+            "default": true
+          }
+        }
+      ],
+      "get": {
+        "summary": "Retrieve a single sales order item.",
+        "tags": [
+          "{i18n>SalesOrderItems}"
+        ],
+        "parameters": [
+          {
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ID",
+                  "createdAt",
+                  "createdBy",
+                  "modifiedAt",
+                  "modifiedBy",
+                  "salesOrder_ID",
+                  "itemNumber",
+                  "product_ID",
+                  "quantity",
+                  "IsActiveEntity",
+                  "HasActiveEntity",
+                  "HasDraftEntity"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "salesOrder",
+                  "product",
+                  "DraftAdministrativeData",
+                  "SiblingEntity"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved sales order item",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AIService.SalesOrderItems"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Change a single sales order item.",
+        "tags": [
+          "{i18n>SalesOrderItems}"
+        ],
+        "requestBody": {
+          "description": "{i18n>SalesOrderItems}",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AIService.SalesOrderItems-update"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a single sales order item.",
+        "tags": [
+          "{i18n>SalesOrderItems}"
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/SalesOrderItems(ID={ID},IsActiveEntity='{IsActiveEntity}')/AIService.draftPrepare": {
+      "post": {
+        "summary": "Invoke action draftPrepare",
+        "tags": [
+          "{i18n>SalesOrderItems}"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/AIService.SalesOrderItems"
+                    }
+                  ],
+                  "nullable": true
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "parameters": [
+          {
+            "description": "ID",
+            "in": "path",
+            "name": "ID",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "01234567-89ab-cdef-0123-456789abcdef"
+            }
+          },
+          {
+            "description": "key: IsActiveEntity",
+            "in": "path",
+            "name": "IsActiveEntity",
+            "required": true,
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Action parameters",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "SideEffectsQualifier": {
+                    "type": "string",
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/SalesOrderItems(ID={ID},IsActiveEntity='{IsActiveEntity}')/salesOrder": {
+      "parameters": [
+        {
+          "description": "ID",
+          "in": "path",
+          "name": "ID",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          }
+        },
+        {
+          "description": "key: IsActiveEntity",
+          "in": "path",
+          "name": "IsActiveEntity",
+          "required": true,
+          "schema": {
+            "type": "boolean",
+            "default": true
+          }
+        }
+      ],
+      "get": {
+        "summary": "Retrieve sales order of a {i18n> sales order items}.",
+        "tags": [
+          "{i18n>SalesOrderItems}",
+          "{i18n>SalesOrder}"
+        ],
+        "parameters": [
+          {
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ID",
+                  "createdAt",
+                  "createdBy",
+                  "modifiedAt",
+                  "modifiedBy",
+                  "salesOrderNumber",
+                  "customerName",
+                  "customerMail",
+                  "grossAmount",
+                  "salesOrderDate",
+                  "customerAddress",
+                  "salesOrderStatus"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "salesOrderItems"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved sales order",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AIService.SalesOrder"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/SalesOrderItems(ID={ID},IsActiveEntity='{IsActiveEntity}')/product": {
+      "parameters": [
+        {
+          "description": "ID",
+          "in": "path",
+          "name": "ID",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          }
+        },
+        {
+          "description": "key: IsActiveEntity",
+          "in": "path",
+          "name": "IsActiveEntity",
+          "required": true,
+          "schema": {
+            "type": "boolean",
+            "default": true
+          }
+        }
+      ],
+      "get": {
+        "summary": "Retrieve product of a {i18n> sales order items}.",
+        "tags": [
+          "{i18n>SalesOrderItems}",
+          "{i18n>Products}"
+        ],
+        "parameters": [
+          {
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ID",
+                  "createdAt",
+                  "createdBy",
+                  "modifiedAt",
+                  "modifiedBy",
+                  "EAN",
+                  "productName",
+                  "productDescription",
+                  "productCategory",
+                  "productBrand",
+                  "productTechSpecs",
+                  "productPrice",
+                  "productStock"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved product",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AIService.Products"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/SalesOrderItems(ID={ID},IsActiveEntity='{IsActiveEntity}')/DraftAdministrativeData": {
+      "parameters": [
+        {
+          "description": "ID",
+          "in": "path",
+          "name": "ID",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          }
+        },
+        {
+          "description": "key: IsActiveEntity",
+          "in": "path",
+          "name": "IsActiveEntity",
+          "required": true,
+          "schema": {
+            "type": "boolean",
+            "default": true
+          }
+        }
+      ],
+      "get": {
+        "summary": "Retrieve draft administrative data of a {i18n> sales order items}.",
+        "tags": [
+          "{i18n>SalesOrderItems}"
+        ],
+        "parameters": [
+          {
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "DraftUUID",
+                  "CreationDateTime",
+                  "CreatedByUser",
+                  "DraftIsCreatedByMe",
+                  "LastChangeDateTime",
+                  "LastChangedByUser",
+                  "InProcessByUser",
+                  "DraftIsProcessedByMe"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved draft administrative data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AIService.DraftAdministrativeData"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Change draft administrative data of a {i18n> sales order items}.",
+        "tags": [
+          "{i18n>SalesOrderItems}"
+        ],
+        "requestBody": {
+          "description": "New property values",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AIService.DraftAdministrativeData-update"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete draft administrative data of a {i18n> sales order items}.",
+        "tags": [
+          "{i18n>SalesOrderItems}"
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/SalesOrderItems(ID={ID},IsActiveEntity='{IsActiveEntity}')/SiblingEntity": {
+      "parameters": [
+        {
+          "description": "ID",
+          "in": "path",
+          "name": "ID",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          }
+        },
+        {
+          "description": "key: IsActiveEntity",
+          "in": "path",
+          "name": "IsActiveEntity",
+          "required": true,
+          "schema": {
+            "type": "boolean",
+            "default": true
+          }
+        }
+      ],
+      "get": {
+        "summary": "Retrieve sibling entity of a {i18n> sales order items}.",
+        "tags": [
+          "{i18n>SalesOrderItems}"
+        ],
+        "parameters": [
+          {
+            "name": "$select",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ID",
+                  "createdAt",
+                  "createdBy",
+                  "modifiedAt",
+                  "modifiedBy",
+                  "salesOrder_ID",
+                  "itemNumber",
+                  "product_ID",
+                  "quantity",
+                  "IsActiveEntity",
+                  "HasActiveEntity",
+                  "HasDraftEntity"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "description": "The value of $expand query option is a comma-separated list of navigation property names, stream property names, or $value indicating the stream content of a media-entity. The corresponding related entities and stream values will be represented inline, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "in": "query",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "salesOrder",
+                  "product",
+                  "DraftAdministrativeData",
+                  "SiblingEntity"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved sibling entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AIService.SalesOrderItems"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/SalesOrderItems(ID={ID},IsActiveEntity='{IsActiveEntity}')/SiblingEntity/AIService.draftPrepare": {
+      "post": {
+        "summary": "Invoke action draftPrepare",
+        "tags": [
+          "{i18n>SalesOrderItems}"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/AIService.SalesOrderItems"
+                    }
+                  ],
+                  "nullable": true
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "parameters": [
+          {
+            "description": "ID",
+            "in": "path",
+            "name": "ID",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "01234567-89ab-cdef-0123-456789abcdef"
+            }
+          },
+          {
+            "description": "key: IsActiveEntity",
+            "in": "path",
+            "name": "IsActiveEntity",
+            "required": true,
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Action parameters",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "SideEffectsQualifier": {
+                    "type": "string",
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/aiProxy": {
+      "post": {
+        "summary": "Invoke action aiProxy",
+        "tags": [
+          "Service Operations"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/AIService.GPTTextResponse"
+                    }
+                  ],
+                  "nullable": true
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "requestBody": {
+          "description": "Action parameters",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "prompt": {
+                    "type": "string",
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/gptCall(prompt={prompt})": {
+      "get": {
+        "summary": "Invoke function gptCall",
+        "tags": [
+          "Service Operations"
+        ],
+        "parameters": [
+          {
+            "required": true,
+            "in": "path",
+            "name": "prompt",
+            "description": "String value needs to be enclosed in single quotes",
+            "schema": {
+              "type": "string",
+              "nullable": true,
+              "pattern": "^(null|'([^']|'')*')$",
+              "default": "null"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/AIService.GPTTextResponse"
+                    }
+                  ],
+                  "nullable": true
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/aiProxyGPTClassificarSolicitacao": {
+      "post": {
+        "summary": "Invoke action aiProxyGPTClassificarSolicitacao",
+        "tags": [
+          "Service Operations"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/AIService.Classificacao"
+                    }
+                  ],
+                  "nullable": true
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "requestBody": {
+          "description": "Action parameters",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "mailSubject": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "mailText": {
+                    "type": "string",
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/aiProxyGPTRespostaProduto": {
+      "post": {
+        "summary": "Invoke action aiProxyGPTRespostaProduto",
+        "tags": [
+          "Service Operations"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/AIService.Resposta"
+                    }
+                  ],
+                  "nullable": true
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "requestBody": {
+          "description": "Action parameters",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "mailText": {
+                    "type": "string",
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/aiProxyGPTRespostaPedido": {
+      "post": {
+        "summary": "Invoke action aiProxyGPTRespostaPedido",
+        "tags": [
+          "Service Operations"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/AIService.Resposta"
+                    }
+                  ],
+                  "nullable": true
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "requestBody": {
+          "description": "Action parameters",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "mailText": {
+                    "type": "string",
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/$batch": {
+      "post": {
+        "summary": "Send a group of requests",
+        "description": "Group multiple requests into a single request payload, see [Batch Requests](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_BatchRequests).\n\n*Please note that \"Try it out\" is not supported for this request.*",
+        "tags": [
+          "Batch Requests"
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Batch request",
+          "content": {
+            "multipart/mixed;boundary=request-separator": {
+              "schema": {
+                "type": "string"
+              },
+              "example": "--request-separator\nContent-Type: application/http\nContent-Transfer-Encoding: binary\n\nGET ProductsFiori HTTP/1.1\nAccept: application/json\n\n\n--request-separator--"
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Batch response",
+            "content": {
+              "multipart/mixed": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "--response-separator\nContent-Type: application/http\n\nHTTP/1.1 200 OK\nContent-Type: application/json\n\n{...}\n--response-separator--"
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AIService.Classificacao": {
+        "title": "Classificacao",
+        "type": "object",
+        "properties": {
+          "classificacao": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "AIService.DraftAdministrativeData": {
+        "title": "DraftAdministrativeData",
+        "type": "object",
+        "properties": {
+          "DraftUUID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          },
+          "CreationDateTime": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04.0000000Z",
+            "nullable": true
+          },
+          "CreatedByUser": {
+            "type": "string",
+            "maxLength": 256,
+            "nullable": true
+          },
+          "DraftIsCreatedByMe": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "LastChangeDateTime": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04.0000000Z",
+            "nullable": true
+          },
+          "LastChangedByUser": {
+            "type": "string",
+            "maxLength": 256,
+            "nullable": true
+          },
+          "InProcessByUser": {
+            "type": "string",
+            "maxLength": 256,
+            "nullable": true
+          },
+          "DraftIsProcessedByMe": {
+            "type": "boolean",
+            "nullable": true
+          }
+        }
+      },
+      "AIService.DraftAdministrativeData-create": {
+        "title": "DraftAdministrativeData (for create)",
+        "type": "object",
+        "properties": {
+          "DraftUUID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          },
+          "CreationDateTime": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04.0000000Z",
+            "nullable": true
+          },
+          "CreatedByUser": {
+            "type": "string",
+            "maxLength": 256,
+            "nullable": true
+          },
+          "DraftIsCreatedByMe": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "LastChangeDateTime": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04.0000000Z",
+            "nullable": true
+          },
+          "LastChangedByUser": {
+            "type": "string",
+            "maxLength": 256,
+            "nullable": true
+          },
+          "InProcessByUser": {
+            "type": "string",
+            "maxLength": 256,
+            "nullable": true
+          },
+          "DraftIsProcessedByMe": {
+            "type": "boolean",
+            "nullable": true
+          }
+        },
+        "required": [
+          "DraftUUID"
+        ]
+      },
+      "AIService.DraftAdministrativeData-update": {
+        "title": "DraftAdministrativeData (for update)",
+        "type": "object",
+        "properties": {
+          "CreationDateTime": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04.0000000Z",
+            "nullable": true
+          },
+          "CreatedByUser": {
+            "type": "string",
+            "maxLength": 256,
+            "nullable": true
+          },
+          "DraftIsCreatedByMe": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "LastChangeDateTime": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04.0000000Z",
+            "nullable": true
+          },
+          "LastChangedByUser": {
+            "type": "string",
+            "maxLength": 256,
+            "nullable": true
+          },
+          "InProcessByUser": {
+            "type": "string",
+            "maxLength": 256,
+            "nullable": true
+          },
+          "DraftIsProcessedByMe": {
+            "type": "boolean",
+            "nullable": true
+          }
+        }
+      },
+      "AIService.GPTTextResponse": {
+        "title": "GPTTextResponse",
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "AIService.Products": {
+        "title": "{i18n>Products}",
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04.0000000Z",
+            "nullable": true
+          },
+          "createdBy": {
+            "type": "string",
+            "maxLength": 255,
+            "nullable": true,
+            "description": "{i18n>UserID.Description}"
+          },
+          "modifiedAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04.0000000Z",
+            "nullable": true
+          },
+          "modifiedBy": {
+            "type": "string",
+            "maxLength": 255,
+            "nullable": true,
+            "description": "{i18n>UserID.Description}"
+          },
+          "EAN": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>EAN}"
+          },
+          "productName": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>productName}"
+          },
+          "productDescription": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>productDescription}"
+          },
+          "productCategory": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>productCategory}"
+          },
+          "productBrand": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>productBrand}"
+          },
+          "productTechSpecs": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>productTechSpecs}"
+          },
+          "productPrice": {
+            "anyOf": [
+              {
+                "type": "number",
+                "format": "decimal",
+                "multipleOf": 0.01,
+                "maximum": 9999999999.99,
+                "minimum": -9999999999.99
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "example": 0,
+            "nullable": true,
+            "description": "{i18n>productPrice}"
+          },
+          "productStock": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true,
+            "description": "{i18n>productStock}"
+          }
+        },
+        "description": "{i18n>Products}"
+      },
+      "AIService.Products-create": {
+        "title": "{i18n>Products} (for create)",
+        "type": "object",
+        "properties": {
+          "EAN": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>EAN}"
+          },
+          "productName": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>productName}"
+          },
+          "productDescription": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>productDescription}"
+          },
+          "productCategory": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>productCategory}"
+          },
+          "productBrand": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>productBrand}"
+          },
+          "productTechSpecs": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>productTechSpecs}"
+          },
+          "productPrice": {
+            "anyOf": [
+              {
+                "type": "number",
+                "format": "decimal",
+                "multipleOf": 0.01,
+                "maximum": 9999999999.99,
+                "minimum": -9999999999.99
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "example": 0,
+            "nullable": true,
+            "description": "{i18n>productPrice}"
+          },
+          "productStock": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true,
+            "description": "{i18n>productStock}"
+          }
+        },
+        "required": [
+          "EAN",
+          "productName"
+        ],
+        "description": "{i18n>Products}"
+      },
+      "AIService.Products-update": {
+        "title": "{i18n>Products} (for update)",
+        "type": "object",
+        "properties": {
+          "EAN": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>EAN}"
+          },
+          "productName": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>productName}"
+          },
+          "productDescription": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>productDescription}"
+          },
+          "productCategory": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>productCategory}"
+          },
+          "productBrand": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>productBrand}"
+          },
+          "productTechSpecs": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>productTechSpecs}"
+          },
+          "productPrice": {
+            "anyOf": [
+              {
+                "type": "number",
+                "format": "decimal",
+                "multipleOf": 0.01,
+                "maximum": 9999999999.99,
+                "minimum": -9999999999.99
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "example": 0,
+            "nullable": true,
+            "description": "{i18n>productPrice}"
+          },
+          "productStock": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true,
+            "description": "{i18n>productStock}"
+          }
+        },
+        "description": "{i18n>Products}"
+      },
+      "AIService.ProductsFiori": {
+        "title": "{i18n>Products}",
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04.0000000Z",
+            "nullable": true
+          },
+          "createdBy": {
+            "type": "string",
+            "maxLength": 255,
+            "nullable": true,
+            "description": "{i18n>UserID.Description}"
+          },
+          "modifiedAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04.0000000Z",
+            "nullable": true
+          },
+          "modifiedBy": {
+            "type": "string",
+            "maxLength": 255,
+            "nullable": true,
+            "description": "{i18n>UserID.Description}"
+          },
+          "EAN": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>EAN}"
+          },
+          "productName": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>productName}"
+          },
+          "productDescription": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>productDescription}"
+          },
+          "productCategory": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>productCategory}"
+          },
+          "productBrand": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>productBrand}"
+          },
+          "productTechSpecs": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>productTechSpecs}"
+          },
+          "productPrice": {
+            "anyOf": [
+              {
+                "type": "number",
+                "format": "decimal",
+                "multipleOf": 0.01,
+                "maximum": 9999999999.99,
+                "minimum": -9999999999.99
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "example": 0,
+            "nullable": true,
+            "description": "{i18n>productPrice}"
+          },
+          "productStock": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true,
+            "description": "{i18n>productStock}"
+          },
+          "IsActiveEntity": {
+            "type": "boolean",
+            "default": true
+          },
+          "HasActiveEntity": {
+            "type": "boolean",
+            "default": false
+          },
+          "HasDraftEntity": {
+            "type": "boolean",
+            "default": false
+          },
+          "DraftAdministrativeData": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AIService.DraftAdministrativeData"
+              }
+            ],
+            "nullable": true
+          },
+          "SiblingEntity": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AIService.ProductsFiori"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "description": "{i18n>Products}"
+      },
+      "AIService.ProductsFiori-create": {
+        "title": "{i18n>Products} (for create)",
+        "type": "object",
+        "properties": {
+          "EAN": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>EAN}"
+          },
+          "productName": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>productName}"
+          },
+          "productDescription": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>productDescription}"
+          },
+          "productCategory": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>productCategory}"
+          },
+          "productBrand": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>productBrand}"
+          },
+          "productTechSpecs": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>productTechSpecs}"
+          },
+          "productPrice": {
+            "anyOf": [
+              {
+                "type": "number",
+                "format": "decimal",
+                "multipleOf": 0.01,
+                "maximum": 9999999999.99,
+                "minimum": -9999999999.99
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "example": 0,
+            "nullable": true,
+            "description": "{i18n>productPrice}"
+          },
+          "productStock": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true,
+            "description": "{i18n>productStock}"
+          },
+          "IsActiveEntity": {
+            "type": "boolean",
+            "default": true
+          },
+          "HasActiveEntity": {
+            "type": "boolean",
+            "default": false
+          },
+          "HasDraftEntity": {
+            "type": "boolean",
+            "default": false
+          },
+          "DraftAdministrativeData": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AIService.DraftAdministrativeData-create"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "required": [
+          "IsActiveEntity",
+          "EAN",
+          "productName"
+        ],
+        "description": "{i18n>Products}"
+      },
+      "AIService.ProductsFiori-update": {
+        "title": "{i18n>Products} (for update)",
+        "type": "object",
+        "properties": {
+          "EAN": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>EAN}"
+          },
+          "productName": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>productName}"
+          },
+          "productDescription": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>productDescription}"
+          },
+          "productCategory": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>productCategory}"
+          },
+          "productBrand": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>productBrand}"
+          },
+          "productTechSpecs": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>productTechSpecs}"
+          },
+          "productPrice": {
+            "anyOf": [
+              {
+                "type": "number",
+                "format": "decimal",
+                "multipleOf": 0.01,
+                "maximum": 9999999999.99,
+                "minimum": -9999999999.99
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "example": 0,
+            "nullable": true,
+            "description": "{i18n>productPrice}"
+          },
+          "productStock": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true,
+            "description": "{i18n>productStock}"
+          },
+          "HasActiveEntity": {
+            "type": "boolean",
+            "default": false
+          },
+          "HasDraftEntity": {
+            "type": "boolean",
+            "default": false
+          }
+        },
+        "description": "{i18n>Products}"
+      },
+      "AIService.Resposta": {
+        "title": "Resposta",
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "AIService.SalesOrder": {
+        "title": "{i18n>SalesOrder}",
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04.0000000Z",
+            "nullable": true
+          },
+          "createdBy": {
+            "type": "string",
+            "maxLength": 255,
+            "nullable": true,
+            "description": "{i18n>UserID.Description}"
+          },
+          "modifiedAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04.0000000Z",
+            "nullable": true
+          },
+          "modifiedBy": {
+            "type": "string",
+            "maxLength": 255,
+            "nullable": true,
+            "description": "{i18n>UserID.Description}"
+          },
+          "salesOrderNumber": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>salesOrderNumber}"
+          },
+          "customerName": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>customerName}"
+          },
+          "customerMail": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>customerMail}"
+          },
+          "grossAmount": {
+            "anyOf": [
+              {
+                "type": "number",
+                "format": "decimal",
+                "multipleOf": 0.01,
+                "maximum": 99999999999.99,
+                "minimum": -99999999999.99
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "example": 0,
+            "nullable": true,
+            "description": "{i18n>grossAmount}"
+          },
+          "salesOrderDate": {
+            "type": "string",
+            "format": "date",
+            "example": "2017-04-13",
+            "nullable": true,
+            "description": "{i18n>salesOrderDate}"
+          },
+          "customerAddress": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>customerAddress}"
+          },
+          "salesOrderItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AIService.SalesOrderItems"
+            },
+            "description": "{i18n>salesOrderItems}"
+          },
+          "salesOrderItems@odata.count": {
+            "$ref": "#/components/schemas/count"
+          },
+          "salesOrderStatus": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>salesOrderStatus}"
+          }
+        },
+        "description": "{i18n>SalesOrder}"
+      },
+      "AIService.SalesOrder-create": {
+        "title": "{i18n>SalesOrder} (for create)",
+        "type": "object",
+        "properties": {
+          "salesOrderNumber": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>salesOrderNumber}"
+          },
+          "customerName": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>customerName}"
+          },
+          "customerMail": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>customerMail}"
+          },
+          "grossAmount": {
+            "anyOf": [
+              {
+                "type": "number",
+                "format": "decimal",
+                "multipleOf": 0.01,
+                "maximum": 99999999999.99,
+                "minimum": -99999999999.99
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "example": 0,
+            "nullable": true,
+            "description": "{i18n>grossAmount}"
+          },
+          "salesOrderDate": {
+            "type": "string",
+            "format": "date",
+            "example": "2017-04-13",
+            "nullable": true,
+            "description": "{i18n>salesOrderDate}"
+          },
+          "customerAddress": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>customerAddress}"
+          },
+          "salesOrderStatus": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>salesOrderStatus}"
+          }
+        },
+        "required": [
+          "salesOrderNumber",
+          "customerName",
+          "customerMail"
+        ],
+        "description": "{i18n>SalesOrder}"
+      },
+      "AIService.SalesOrder-update": {
+        "title": "{i18n>SalesOrder} (for update)",
+        "type": "object",
+        "properties": {
+          "salesOrderNumber": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>salesOrderNumber}"
+          },
+          "customerName": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>customerName}"
+          },
+          "customerMail": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>customerMail}"
+          },
+          "grossAmount": {
+            "anyOf": [
+              {
+                "type": "number",
+                "format": "decimal",
+                "multipleOf": 0.01,
+                "maximum": 99999999999.99,
+                "minimum": -99999999999.99
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "example": 0,
+            "nullable": true,
+            "description": "{i18n>grossAmount}"
+          },
+          "salesOrderDate": {
+            "type": "string",
+            "format": "date",
+            "example": "2017-04-13",
+            "nullable": true,
+            "description": "{i18n>salesOrderDate}"
+          },
+          "customerAddress": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>customerAddress}"
+          },
+          "salesOrderStatus": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>salesOrderStatus}"
+          }
+        },
+        "description": "{i18n>SalesOrder}"
+      },
+      "AIService.SalesOrderFiori": {
+        "title": "{i18n>SalesOrder}",
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04.0000000Z",
+            "nullable": true
+          },
+          "createdBy": {
+            "type": "string",
+            "maxLength": 255,
+            "nullable": true,
+            "description": "{i18n>UserID.Description}"
+          },
+          "modifiedAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04.0000000Z",
+            "nullable": true
+          },
+          "modifiedBy": {
+            "type": "string",
+            "maxLength": 255,
+            "nullable": true,
+            "description": "{i18n>UserID.Description}"
+          },
+          "salesOrderNumber": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>salesOrderNumber}"
+          },
+          "customerName": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>customerName}"
+          },
+          "customerMail": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>customerMail}"
+          },
+          "grossAmount": {
+            "anyOf": [
+              {
+                "type": "number",
+                "format": "decimal",
+                "multipleOf": 0.01,
+                "maximum": 99999999999.99,
+                "minimum": -99999999999.99
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "example": 0,
+            "nullable": true,
+            "description": "{i18n>grossAmount}"
+          },
+          "salesOrderDate": {
+            "type": "string",
+            "format": "date",
+            "example": "2017-04-13",
+            "nullable": true,
+            "description": "{i18n>salesOrderDate}"
+          },
+          "customerAddress": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>customerAddress}"
+          },
+          "salesOrderItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AIService.SalesOrderItems"
+            },
+            "description": "{i18n>salesOrderItems}"
+          },
+          "salesOrderItems@odata.count": {
+            "$ref": "#/components/schemas/count"
+          },
+          "salesOrderStatus": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>salesOrderStatus}"
+          },
+          "IsActiveEntity": {
+            "type": "boolean",
+            "default": true
+          },
+          "HasActiveEntity": {
+            "type": "boolean",
+            "default": false
+          },
+          "HasDraftEntity": {
+            "type": "boolean",
+            "default": false
+          },
+          "DraftAdministrativeData": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AIService.DraftAdministrativeData"
+              }
+            ],
+            "nullable": true
+          },
+          "SiblingEntity": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AIService.SalesOrderFiori"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "description": "{i18n>SalesOrder}"
+      },
+      "AIService.SalesOrderFiori-create": {
+        "title": "{i18n>SalesOrder} (for create)",
+        "type": "object",
+        "properties": {
+          "salesOrderNumber": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>salesOrderNumber}"
+          },
+          "customerName": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>customerName}"
+          },
+          "customerMail": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>customerMail}"
+          },
+          "grossAmount": {
+            "anyOf": [
+              {
+                "type": "number",
+                "format": "decimal",
+                "multipleOf": 0.01,
+                "maximum": 99999999999.99,
+                "minimum": -99999999999.99
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "example": 0,
+            "nullable": true,
+            "description": "{i18n>grossAmount}"
+          },
+          "salesOrderDate": {
+            "type": "string",
+            "format": "date",
+            "example": "2017-04-13",
+            "nullable": true,
+            "description": "{i18n>salesOrderDate}"
+          },
+          "customerAddress": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>customerAddress}"
+          },
+          "salesOrderStatus": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>salesOrderStatus}"
+          },
+          "IsActiveEntity": {
+            "type": "boolean",
+            "default": true
+          },
+          "HasActiveEntity": {
+            "type": "boolean",
+            "default": false
+          },
+          "HasDraftEntity": {
+            "type": "boolean",
+            "default": false
+          },
+          "DraftAdministrativeData": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AIService.DraftAdministrativeData-create"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "required": [
+          "IsActiveEntity",
+          "salesOrderNumber",
+          "customerName",
+          "customerMail"
+        ],
+        "description": "{i18n>SalesOrder}"
+      },
+      "AIService.SalesOrderFiori-update": {
+        "title": "{i18n>SalesOrder} (for update)",
+        "type": "object",
+        "properties": {
+          "salesOrderNumber": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>salesOrderNumber}"
+          },
+          "customerName": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>customerName}"
+          },
+          "customerMail": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>customerMail}"
+          },
+          "grossAmount": {
+            "anyOf": [
+              {
+                "type": "number",
+                "format": "decimal",
+                "multipleOf": 0.01,
+                "maximum": 99999999999.99,
+                "minimum": -99999999999.99
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "example": 0,
+            "nullable": true,
+            "description": "{i18n>grossAmount}"
+          },
+          "salesOrderDate": {
+            "type": "string",
+            "format": "date",
+            "example": "2017-04-13",
+            "nullable": true,
+            "description": "{i18n>salesOrderDate}"
+          },
+          "customerAddress": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>customerAddress}"
+          },
+          "salesOrderStatus": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>salesOrderStatus}"
+          },
+          "HasActiveEntity": {
+            "type": "boolean",
+            "default": false
+          },
+          "HasDraftEntity": {
+            "type": "boolean",
+            "default": false
+          }
+        },
+        "description": "{i18n>SalesOrder}"
+      },
+      "AIService.SalesOrderItems": {
+        "title": "{i18n>SalesOrderItems}",
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "description": "ID"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04.0000000Z",
+            "nullable": true
+          },
+          "createdBy": {
+            "type": "string",
+            "maxLength": 255,
+            "nullable": true,
+            "description": "{i18n>UserID.Description}"
+          },
+          "modifiedAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04.0000000Z",
+            "nullable": true
+          },
+          "modifiedBy": {
+            "type": "string",
+            "maxLength": 255,
+            "nullable": true,
+            "description": "{i18n>UserID.Description}"
+          },
+          "salesOrder": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AIService.SalesOrder"
+              }
+            ],
+            "nullable": true,
+            "description": "{i18n>salesOrder}"
+          },
+          "salesOrder_ID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "nullable": true,
+            "description": "{i18n>salesOrder}"
+          },
+          "itemNumber": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>itemNumber}"
+          },
+          "product": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AIService.Products"
+              }
+            ],
+            "nullable": true,
+            "description": "{i18n>product}"
+          },
+          "product_ID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "nullable": true,
+            "description": "{i18n>product}"
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true,
+            "description": "{i18n>quantity}"
+          },
+          "IsActiveEntity": {
+            "type": "boolean",
+            "default": true
+          },
+          "HasActiveEntity": {
+            "type": "boolean",
+            "default": false
+          },
+          "HasDraftEntity": {
+            "type": "boolean",
+            "default": false
+          },
+          "DraftAdministrativeData": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AIService.DraftAdministrativeData"
+              }
+            ],
+            "nullable": true
+          },
+          "SiblingEntity": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AIService.SalesOrderItems"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "description": "{i18n>SalesOrderItems}"
+      },
+      "AIService.SalesOrderItems-create": {
+        "title": "{i18n>SalesOrderItems} (for create)",
+        "type": "object",
+        "properties": {
+          "salesOrder_ID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "nullable": true,
+            "description": "{i18n>salesOrder}"
+          },
+          "itemNumber": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>itemNumber}"
+          },
+          "product_ID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "nullable": true,
+            "description": "{i18n>product}"
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true,
+            "description": "{i18n>quantity}"
+          },
+          "IsActiveEntity": {
+            "type": "boolean",
+            "default": true
+          },
+          "HasActiveEntity": {
+            "type": "boolean",
+            "default": false
+          },
+          "HasDraftEntity": {
+            "type": "boolean",
+            "default": false
+          },
+          "DraftAdministrativeData": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AIService.DraftAdministrativeData-create"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "required": [
+          "IsActiveEntity",
+          "product_ID",
+          "quantity"
+        ],
+        "description": "{i18n>SalesOrderItems}"
+      },
+      "AIService.SalesOrderItems-update": {
+        "title": "{i18n>SalesOrderItems} (for update)",
+        "type": "object",
+        "properties": {
+          "salesOrder_ID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "nullable": true,
+            "description": "{i18n>salesOrder}"
+          },
+          "itemNumber": {
+            "type": "string",
+            "nullable": true,
+            "description": "{i18n>itemNumber}"
+          },
+          "product_ID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "nullable": true,
+            "description": "{i18n>product}"
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true,
+            "description": "{i18n>quantity}"
+          },
+          "HasActiveEntity": {
+            "type": "boolean",
+            "default": false
+          },
+          "HasDraftEntity": {
+            "type": "boolean",
+            "default": false
+          }
+        },
+        "description": "{i18n>SalesOrderItems}"
+      },
+      "count": {
+        "anyOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "string"
+          }
+        ],
+        "description": "The number of entities in the collection. Available when using the [$count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount) query option."
+      },
+      "error": {
+        "type": "object",
+        "required": [
+          "error"
+        ],
+        "properties": {
+          "error": {
+            "type": "object",
+            "required": [
+              "code",
+              "message"
+            ],
+            "properties": {
+              "code": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              },
+              "target": {
+                "type": "string"
+              },
+              "details": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "target": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "innererror": {
+                "type": "object",
+                "description": "The structure of this object is service-specific"
+              }
+            }
+          }
+        }
+      }
+    },
+    "parameters": {
+      "top": {
+        "name": "$top",
+        "in": "query",
+        "description": "Show only the first n items, see [Paging - Top](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptiontop)",
+        "schema": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "example": 50
+      },
+      "skip": {
+        "name": "$skip",
+        "in": "query",
+        "description": "Skip the first n items, see [Paging - Skip](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionskip)",
+        "schema": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "count": {
+        "name": "$count",
+        "in": "query",
+        "description": "Include count of items, see [Count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount)",
+        "schema": {
+          "type": "boolean"
+        }
+      },
+      "search": {
+        "name": "$search",
+        "in": "query",
+        "description": "Search items by search phrases, see [Searching](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionsearch)",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    "responses": {
+      "error": {
+        "description": "Error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/error"
+            }
+          }
+        }
+      }
+    }
+  }
+}

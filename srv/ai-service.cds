@@ -8,16 +8,10 @@ service AIService {
 
     @odata.draft.enabled
     entity SalesOrderFiori
-        as projection on capAICore.SalesOrder  {
-        *,
-        salesOrderItems: redirected to SalesOrderItems
-    }; 
+        as projection on capAICore.SalesOrder   
  
     entity SalesOrder
-        as projection on capAICore.SalesOrder {
-        *,
-        salesOrderItems: redirected to SalesOrderItems
-    }; 
+        as projection on capAICore.SalesOrder 
     
     
     entity SalesOrderItems
@@ -40,4 +34,14 @@ service AIService {
     };
 
     action aiProxyGPTClassificarSolicitacao(mailSubject: String, mailText : String) returns Classificacao;
+
+
+    type Resposta {
+        text : LargeString;
+    };
+
+
+    action aiProxyGPTRespostaProduto( mailText : LargeString) returns Resposta;
+
+    action aiProxyGPTRespostaPedido( mailText : LargeString) returns Resposta;
 }

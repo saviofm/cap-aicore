@@ -1,13 +1,13 @@
 {
   "i18n/i18n_pt.properties": 1685298057229,
-  "i18n/i18n.properties": 1685298061390,
-  "i18n/i18n_en.properties": 1685298026490,
   "i18n/i18n_pt_BR.properties": 1685298039833,
+  "i18n/i18n_en.properties": 1685298026490,
+  "i18n/i18n.properties": 1685298061390,
   "Component.js": 1685291557335,
-  "manifest.json": 1685372660835,
+  "manifest.json": 1685494409638,
   "i18n/.vscode/settings.json": 1685298885205,
-  "manifest-bundle.zip": 1685372660855,
-  "Component-preload.js": 1685372661337,
+  "manifest-bundle.zip": 1685494409702,
+  "Component-preload.js": 1685494410165,
   "Component-dbg.js": 1685291557335,
   "index.html": 1685291557331
 }
